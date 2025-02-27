@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/javafx"
+            fx:controller="by.rublevskaya.mvcapp.controller.XMLController">
+    <left>
+        <VBox spacing="12" alignment="TOP_CENTER" styleClass="left-panel" BorderPane.alignment="CENTER">
+            <Button text="Сохранить в XML" onAction="#saveToXML" styleClass="fancy-button" />
+            <Button text="Загрузить из XML" onAction="#loadFromXML" styleClass="fancy-button" />
+            <Button text="Вернуться" onAction="#returnToMainMenu" styleClass="fancy-button" />
+        </VBox>
+    </left>
+    <center>
+        <TableView fx:id="xmlRecordTable" styleClass="pink-table" BorderPane.alignment="CENTER">
+            <columns>
+                <TableColumn fx:id="idColumn" text="ID" />
+                <TableColumn fx:id="fullNameColumn" text="ФИО" />
+                <TableColumn fx:id="birthDateColumn" text="Дата рождения" />
+                <TableColumn fx:id="teamColumn" text="Команда" />
+                <TableColumn fx:id="homeCityColumn" text="Город" />
+                <TableColumn fx:id="squadColumn" text="Состав" />
+                <TableColumn fx:id="positionColumn" text="Позиция" />
+            </columns>
+        </TableView>
+    </center>
+</BorderPane>

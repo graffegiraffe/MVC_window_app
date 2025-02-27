@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import java.lang.Integer?>
+<?import javafx.collections.FXCollections?>
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" fx:controller="by.rublevskaya.mvcapp.controller.MainController">
+
+    <!-- Левая панель с кнопками -->
+    <left>
+        <VBox spacing="12" alignment="TOP_CENTER" styleClass="left-panel" BorderPane.alignment="CENTER">
+            <Button text="Добавить запись" onAction="#openAddDialog" styleClass="fancy-button" />
+            <Button text="Удалить запись" onAction="#openDeleteDialog" styleClass="fancy-button" />
+            <Button text="Найти запись" onAction="#openSearchDialog" styleClass="fancy-button" />
+            <Button text="Загрузить из базы" onAction="#loadRecords" styleClass="fancy-button" />
+            <Button text="Работа с XML" onAction="#openXMLMenu" styleClass="fancy-button" />
+            <Button text="Вернуться в начало" onAction="#returnToStart" styleClass="fancy-button" />
+        </VBox>
+    </left>
+
+    <!-- Панель управления постраничным выводом -->
+    <top>
+        <HBox spacing="10" alignment="CENTER" BorderPane.alignment="TOP_CENTER">
+            <Button text="&lt;&lt; Первая" onAction="#goToFirstPage" />
+            <Button text="&lt; Предыдущая" onAction="#goToPreviousPage" />
+            <Label text="Страница:" />
+            <Label fx:id="currentPageLabel" text="1" />
+            <Label text="из" />
+            <Label fx:id="totalPagesLabel" text="1" />
+            <Button text="Следующая >" onAction="#goToNextPage" />
+            <Button text="Последняя >>" onAction="#goToLastPage" />
+            <Label text=" | Записей на странице:" />
+            <ChoiceBox fx:id="recordsPerPageChoiceBox">
+                <items>
+                    <FXCollections fx:factory="observableArrayList">
+                        <Integer fx:value="5" />
+                        <Integer fx:value="10" />
+                        <Integer fx:value="20" />
+                    </FXCollections>
+                </items>
+            </ChoiceBox>
+        </HBox>
+    </top>
+
+    <!-- Центральная панель с TabPane -->
+    <center>
+        <TabPane fx:id="viewSwitcher" BorderPane.alignment="CENTER">
+            <!-- Таблица -->
+            <Tab text="Таблица" closable="true">
+                <content>
+                    <TableView fx:id="recordTable" styleClass="pink-table">
+                        <columns>
+                            <TableColumn fx:id="idColumn" text="ID" />
+                            <TableColumn fx:id="fullNameColumn" text="ФИО" />
+                            <TableColumn fx:id="birthDateColumn" text="Дата рождения" />
+                            <TableColumn fx:id="teamColumn" text="Команда" />
+                            <TableColumn fx:id="homeCityColumn" text="Город" />
+                            <TableColumn fx:id="squadColumn" text="Состав" />
+                            <TableColumn fx:id="positionColumn" text="Позиция" />
+                        </columns>
+                    </TableView>
+                </content>
+            </Tab>
+
+            <!-- Дерево -->
+            <Tab text="Дерево" closable="true">
+                <content>
+                    <TreeView fx:id="recordTreeView" />
+                </content>
+            </Tab>
+        </TabPane>
+    </center>
+
+</BorderPane>

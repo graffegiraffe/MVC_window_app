@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns:fx="http://javafx.com/javafx"
+      xmlns="http://javafx.com/javafx/8"
+      fx:controller="by.rublevskaya.mvcapp.controller.SearchController"
+      spacing="10" alignment="CENTER"
+      styleClass="root">
+
+    <Label text="Поиск записей"
+           styleClass="label"/>
+
+    <TextField fx:id="fullNameField"
+               promptText="Введите ФИО игрока" />
+
+    <TextField fx:id="teamField"
+               promptText="Введите название команды" />
+
+    <TextField fx:id="positionField"
+               promptText="Введите позицию игрока" />
+
+    <TableView fx:id="searchResults"
+               styleClass="pink-table">
+        <columns>
+            <TableColumn fx:id="idColumn" text="ID" />
+            <TableColumn fx:id="fullNameColumn" text="ФИО" />
+            <TableColumn fx:id="birthDateColumn" text="Дата рождения" />
+            <TableColumn fx:id="teamColumn" text="Команда" />
+            <TableColumn fx:id="homeCityColumn" text="Город" />
+            <TableColumn fx:id="squadColumn" text="Состав" />
+            <TableColumn fx:id="positionColumn" text="Позиция" />
+        </columns>
+    </TableView>
+
+    <HBox spacing="10" alignment="CENTER">
+        <Button text="Искать"
+                onAction="#search"
+                styleClass="fancy-button"/>
+        <Button text="Закрыть"
+                onAction="#closeDialog"
+                styleClass="fancy-button"/>
+    </HBox>
+</VBox>

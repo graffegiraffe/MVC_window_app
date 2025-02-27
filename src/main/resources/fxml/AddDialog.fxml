@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns:fx="http://javafx.com/javafx"
+      xmlns="http://javafx.com/javafx/8"
+      fx:controller="by.rublevskaya.mvcapp.controller.AddController"
+      spacing="10" alignment="CENTER"
+      styleClass="root"> <!-- Применяем стиль root -->
+
+    <Label text="Добавить нового игрока"
+           styleClass="label"/> <!-- Добавляем стили для заголовка -->
+
+    <TextField fx:id="fullNameField" promptText="ФИО" />
+    <DatePicker fx:id="birthDatePicker" promptText="Дата рождения" />
+    <TextField fx:id="teamField" promptText="Команда" />
+    <TextField fx:id="homeCityField" promptText="Город" />
+    <TextField fx:id="squadField" promptText="Состав команды" />
+    <TextField fx:id="positionField" promptText="Позиция" />
+
+    <HBox spacing="10" alignment="CENTER">
+        <Button text="Добавить" onAction="#addRecord" styleClass="fancy-button"/> <!-- Применяем розовые стили к кнопкам -->
+        <Button text="Отмена" onAction="#closeDialog" styleClass="fancy-button"/>
+    </HBox>
+</VBox>
