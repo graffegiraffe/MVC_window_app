@@ -5,7 +5,9 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import org.w3c.dom.Document;
@@ -16,14 +18,15 @@ import java.io.File;
 import java.time.LocalDate;
 
 public class XMLController {
-
-    @FXML
-    private TableView<Record> xmlRecordTable;
+    @FXML private TableColumn<Record, Integer> idColumn;
+    @FXML private TableColumn<Record, String> fullNameColumn;
+    @FXML private TableColumn<Record, String> birthDateColumn;
+    @FXML private TableColumn<Record, String> teamColumn;
+    @FXML private TableColumn<Record, String> homeCityColumn;
+    @FXML private TableColumn<Record, String> squadColumn;
+    @FXML private TableColumn<Record, String> positionColumn;
+    @FXML private TableView<Record> xmlRecordTable;
     private final ObservableList<Record> records = FXCollections.observableArrayList();
-
-    public XMLController(TableView<Record> xmlRecordTable) {
-        this.xmlRecordTable = xmlRecordTable;
-    }
 
     @FXML
     public void saveToXML() {
@@ -52,6 +55,7 @@ public class XMLController {
 
             if (file != null) {
                 loadRecordsFromXML(file);
+                xmlRecordTable.setItems(records); // Обновляем таблицу новыми данными
                 showAlert("Успех", "Данные успешно загружены из файла: " + file.getName(), Alert.AlertType.INFORMATION);
             }
         } catch (Exception e) {
@@ -59,7 +63,18 @@ public class XMLController {
             showAlert("Ошибка", "Ошибка при загрузке из XML: " + e.getMessage(), Alert.AlertType.ERROR);
         }
     }
-
+    @FXML
+    public void initialize() {
+        // Настройка привязки колонок к полям объекта Record
+        idColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
+        fullNameColumn.setCellValueFactory(new PropertyValueFactory<>("fullName"));
+        birthDateColumn.setCellValueFactory(new PropertyValueFactory<>("birthDate"));
+        teamColumn.setCellValueFactory(new PropertyValueFactory<>("team"));
+        homeCityColumn.setCellValueFactory(new PropertyValueFactory<>("homeCity"));
+        squadColumn.setCellValueFactory(new PropertyValueFactory<>("squad"));
+        positionColumn.setCellValueFactory(new PropertyValueFactory<>("position"));
+        xmlRecordTable.setItems(records);
+    }
     @FXML
     public void returnToMainMenu() {
         Stage stage = (Stage) xmlRecordTable.getScene().getWindow();

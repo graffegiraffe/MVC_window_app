@@ -19,15 +19,6 @@ public class AddController {
 
     private final DatabaseHandler dbHandler = new DatabaseHandler();
 
-    public AddController(TextField fullNameField, DatePicker birthDatePicker, TextField teamField, TextField homeCityField, TextField squadField, TextField positionField) {
-        this.fullNameField = fullNameField;
-        this.birthDatePicker = birthDatePicker;
-        this.teamField = teamField;
-        this.homeCityField = homeCityField;
-        this.squadField = squadField;
-        this.positionField = positionField;
-    }
-
     @FXML
     public void addRecord() {
         try {

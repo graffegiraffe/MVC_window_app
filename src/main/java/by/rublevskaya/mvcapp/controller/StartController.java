@@ -14,9 +14,6 @@ public class StartController {
     @FXML
     private Button continueButton;
 
-    public StartController(Button continueButton) {
-        this.continueButton = continueButton;
-    }
 
     @FXML
     private void onContinueButtonClick(ActionEvent event) {

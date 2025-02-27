@@ -25,22 +25,6 @@ public class SearchController {
 
     private final DatabaseHandler dbHandler = new DatabaseHandler();
 
-    public SearchController(TextField fullNameField, TextField positionField, TableView<Record> searchResults, TableColumn<Record, Integer> idColumn,
-                            TableColumn<Record, String> fullNameColumn, TableColumn<Record, String> birthDateColumn, TableColumn<Record, String> teamColumn,
-                            TableColumn<Record, String> homeCityColumn, TableColumn<Record, String> squadColumn, TableColumn<Record, String> positionColumn) {
-        this.fullNameField = fullNameField;
-        this.positionField = positionField;
-        this.searchResults = searchResults;
-        this.idColumn = idColumn;
-        this.fullNameColumn = fullNameColumn;
-        this.birthDateColumn = birthDateColumn;
-        this.teamColumn = teamColumn;
-        this.homeCityColumn = homeCityColumn;
-        this.squadColumn = squadColumn;
-        this.positionColumn = positionColumn;
-        this.teamField = new TextField();
-    }
-
     @FXML
     public void initialize() {
         idColumn.setCellValueFactory(new PropertyValueFactory<>("id"));

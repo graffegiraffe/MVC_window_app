@@ -13,11 +13,6 @@ public class DeleteController {
 
     private final DatabaseHandler dbHandler = new DatabaseHandler();
 
-    public DeleteController(TextField fullNameField, TextField positionField) {
-        this.fullNameField = fullNameField;
-        this.positionField = positionField;
-    }
-
     @FXML
     public void delete() {
         String fullName = fullNameField.getText().trim();

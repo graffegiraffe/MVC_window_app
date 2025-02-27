@@ -14,7 +14,7 @@
                        fitHeight="150"
                        preserveRatio="true"
                        pickOnBounds="true">
-                <Image url="/img/pink-removebg-preview.png"/>
+                <Image url="@/img/pink-removebg-preview.png"/>
             </ImageView>
 
             <VBox alignment="CENTER" spacing="10">
